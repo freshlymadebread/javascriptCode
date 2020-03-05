@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .content{
+        text-align: center;
+        margin:10px
+    }
+    .flying{
+        border:azure 10px ;
+        position:fixed;
+        top:100px;
+        width: 100px;
+        height:200px;
+        font-size: 32px;
+    }
+    body{
+        background-image: url(image/back.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div class = "flying" >求你了，别输入你的爱豆的名字</div>
+        <div class = "content" >My name is: <span id = "name">pending</span><div>
+        <div class = "content" >My status: <span id = "status">Browseing LFL's web pages
+            </span><div>
+        <div class = "content" onclick="out(event)">
+             i am a Healthy <span id = "sex"></span>. so  i can <br>
+                <input type="button" value ="run"></input> 
+                <input type="button" value ="walk"></input> 
+                <input type="button" value ="eat"></input> 
+                <input type="button" value ="sleep"></input> 
+                <input type="button" value ="love oath" onclick="shutlove()"></input> 
+        </div>
+        <div class = "content" >you can reset your love: <input type = "input" id = "ownlove">
+            <input type="button" value ="重置" onclick="resetlove()"> 
+        </div>
+    </div>
+        <script>
+            var aname = localStorage.getItem("name");
+            if(!aname){
+                aname= prompt("请输入您的名字","L-flying")
+                localStorage.setItem("name",aname);
+            }
+            var asex =localStorage.getItem("sex");
+            if(!asex){
+                asex= confirm("您是女孩吗")?"girl":"boy";
+                localStorage.setItem("sex",asex);
+            }
+            document.getElementById("name").innerText = aname;
+            document.getElementById("sex").innerText = asex;
+            var People = function (name,age=18){
+                this.name =name
+                this.age =age
+            }
+            People.prototype = {
+                run :function(){return "i am running"},
+                walk :function(){return "i am walking"},
+                eat :function(){ return ("i am eating") },
+                sleep :function(){ return ("i am sleeping") },
+            }
+            var a=new People(aname);
+            {
+                let love="i am missing lfl"
+                Object.defineProperty(a,"love",{
+                    set:(Oath)=>{ console.log("L-flying  reset her oath."); love = Oath; },
+                    get:_=>{console.log("L-flying  shouted her oath.");return love },
+                    enumerable :true
+                })
+            }
+            function out(e){
+                if(e.path[0].type!= "button") return;
+                console.log(e.path[0].value)
+                if(e.path[0].value == "love oath")  document.getElementById("status").innerText = a.love ;
+                else  document.getElementById("status").innerText = a[e.path[0].value]() ;
+            }
+            function resetlove(){
+                var oath = document.getElementById("ownlove").value
+                if (oath.search('木子洋') != -1){ a.love = "你真的好皮啊，你过来我不打你";return}
+                if (oath.search('李振洋') != -1){ a.love = "你真的好皮啊，你过来我不打你";return}
+                else{
+                    a.love = oath
+                }
+            }
+            function shutlove(){
+                if(a.love ==  "你真的好皮啊，你过来我不打你"){
+                    document.body.removeChild( document.getElementById("container"))
+                    document.body.style.background = "url(image/warning.jpg)  no-repeat "
+                    document.body.style.backgroundSize = "cover "
+                }
+                else
+                {
+                    document.body.styl ="" 
+                    document.body.style.background = "url(image/heart.jpg)  no-repeat "
+                    document.body.style.backgroundSize = "cover "
+                }
+            }
+        </script>
+</body>
+</html>

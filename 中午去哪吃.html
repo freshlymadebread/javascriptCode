@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+      #bigDiv div{
+        height:50px;
+        width:50px;
+        float:left;
+        background-color:red;
+        margin-left:5px;
+        visibility: hidden;
+      }
+      #bigDiv p{
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+  <div id = bigDiv>
+    <div><p>吃面</p></div>
+    <div><p>吃饭</p></div>
+    <div><p>兰州</p></div>
+    <div><p>随便</p></div>
+    <div><p>炒饭</p></div>
+    <div><p>一期</p></div>
+    <div><p>二期</p></div>
+    <div><p>全家</p></div>
+    <div><p>西北</p></div>
+    <div><p>谢谢</p></div>
+  </div>
+    <br/><br/><br/><br/>
+    <input type="button" id="startBtn" value="开 始" onclick="startRun()">
+    <input type="button" id="confirmBtn" value="确 定" onclick="stopRun()">
+    <script language="javascript">
+      var allDiv = $("#bigDiv").find("div");
+      var t;
+      function startRun(){
+        var index = 11;
+        $(allDiv).each(function(i){
+          if($(this).css("visibility")!="hidden"){
+            index = i;
+          }
+        });
+        if(index == 11){
+          index = parseInt(9*Math.random());
+        }
+        $(allDiv).eq(index).css("visibility","visible");
+        setTimeout(function(){stepRun(index);},50);
+      }
+      function stepRun(index){
+        if($(allDiv).eq(index).css("visibility")!="hidden")
+        {
+          $(allDiv).eq(index).css("visibility","hidden");
+          if(index==9){
+            $(allDiv).eq(0).css("visibility","visible");
+            t = setTimeout(function(){stepRun(0)},50);
+          }else{
+            $(allDiv).eq(index+1).css("visibility","visible");
+            t = setTimeout(function(){stepRun(++index)},50);
+          }
+        }
+      }
+      function stopRun()
+      {
+        clearTimeout(t);
+      }
+    </script>
+  </body>
+</html>

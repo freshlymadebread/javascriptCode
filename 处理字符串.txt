@@ -1,0 +1,17 @@
+处理字符串1：分割字符串
+	var elementNames;
+    var elements=[];
+    if(ElementName.indexOf(",")>0){//批量
+        elementNames=ElementName.split(",");
+        for(var i=0; i<elementNames.length; i++){
+            let element={};
+            element.elementName=elementNames[i];
+            elements.push(element);
+        }
+处理字符串2：字符串替换
+	    1.部分替换  str.replace(/abc/,"qwe")  :将str字符串中匹配到的第一个abc换成qwe
+	    2.全部替换  str.replace(/abc/g,"qwe")  :将str字符串中匹配到的全部abc换成qwe
+	    3.转义字符 \    str.replace(/a\/bc/g,"qwe")  :将str字符串中匹配到的全部a/bc换成qwe
+	      var name=span style="color: whitesmoke;background-color: darkred;">UI</span>2；
+	      var namestr= name.replace(/<span style="color: whitesmoke;background-color: darkred;">/,"").replace("</span>","");
+	       console.log(namestr);

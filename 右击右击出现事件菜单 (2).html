@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #menu{
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top:0;
+            display: none;
+        }
+        #div{
+            width: 400px;
+            height: 400px;
+            background-color: white;;
+        }
+        .htItemWrapper {
+            margin-left: 10px;
+            margin-right: 6px;
+        }
+        .mf :hover{ background-color:#ffff00; }
+    </style>
+</head>
+<body>
+<div id="menu">
+    <table border="1" width="100%" height="100%"  style="border:thin" cellspacing="0">
+        <tr>
+            <td id="mf1"  onmouseover = "over('1')" onmouseout="out(1)" style="cursor:default;border:outset 1;" align="center" onclick="parent.create()">
+                creat row
+            </td>
+        </tr>
+        <tr>
+            <td id="mf2"  onmouseover = "over('2')" onmouseout="out(2)" style="cursor:default;border:outset 1;" align="center" onclick="parent.update();">
+                modify row
+            </td>
+        </tr>
+        <tr>
+            <td id="mf3"  onmouseover = "over('3')" onmouseout="out(3)" style="cursor:default;border:outset 1;" align="center" onclick="parent.del();">
+                delete row
+            </td>
+        </tr>
+    </table>
+</div>
+<table id= "tableq">
+    <tr>
+        <th>表头1</th>
+        <th>表头2</th>
+        <th>表头3</th>
+    </tr>
+    <tr>
+        <td>111</td>
+        <td>222</td>
+        <td>333</td>
+    </tr>
+    <tr>
+        <td>111</td>
+        <td>222</td>
+        <td>333</td>
+    </tr>
+    <tr>
+        <td>111</td>
+        <td>222</td>
+        <td>333</td>
+    </tr>
+</table>
+<button onclick="console.log('123')">mutenbsdk</button>
+<script  >
+
+    function over(n){
+        document.getElementById("mf"+n).style.backgroundColor="#ccc";
+    }
+    function out(n){
+        document.getElementById("mf"+n).style.backgroundColor="white";
+        
+    }
+	/**
+ * Created by Administrator on 2016/8/12.
+ */
+(function () {
+
+    var menu = document.querySelector("#menu");
+    var tableq = document.querySelector("#tableq");
+    tableq.addEventListener("contextmenu",function () {
+        event.preventDefault();
+        menu.style.display = "block";
+        menu.style.visibility = "visible";
+        menu.style.left = event.pageX + "px";
+        menu.style.top = event.pageY + "px";
+        });
+    document.addEventListener("click",function () {
+        menu.style.visibility ="hidden";
+        });
+})();
+
+</script>
+</body>
+</html>
