@@ -1,0 +1,51 @@
+1.三点表达式 用于将数组展开或者用于合并
+  展开：做输出时
+    let arr = [1,2,3] 
+          则  ...arr  =1,2,3
+  合并：做接收时
+  function fun(a,...arr){
+    console.log(arr)
+  }
+  fun(1,2,3) // [2,3]
+2.数组的解构赋值：本质是模式匹配，匹配次序。即左侧是数组结构，右侧也是数组结构
+    即对应的位置赋值对应的值 要保证左右两边格式相同，如果左侧多余则为undefined，右侧多余则无他，可以有默认值。
+    let [a,..b] =[1,2,3,60]
+    a // 1
+    b // [2,3,60]
+  引申：只要具备iterator接口就可以进行解构
+  默认值：可以支持默认值，当右侧对应的值严格等于undefined时
+3.对象的解构赋值：本质也是模式匹配，匹配变量的属性名称。
+  可以很方便地取出对象内部的变量或方法
+    obj ={ key1:'value1',key2:'value2'}
+    解构： let {key1:k1,key2:k2} = obj  注意 在解析时key1是要在RHS查询时的属性名，k1是LHS时的接受变量
+    递归解构
+    const node = {
+      loc: {
+        start: {
+            line: 1,
+            column: 5
+          }
+        }
+      };
+    let { loc, loc: { start }, loc: { start: { line }} } = node;
+    对象的解构赋值的右操作数会隐式转化为对象，比如string或者 boolen
+4.字符串的解构：字符串可以隐式转化为数组或对象因此 都采用数组结构和对象解构，但结果必然不同。
+  let [a,v,b] = ['hel']    a='h' v='e' b ='l'
+  let {length } ='hel'  length = 3
+
+5.解构的用途
+  1. 交换变量的值
+      for(let i =0;i<arr.length;i++){
+        if(arr[i] < arr[i+1]) [arr[i],arr[i+1]] =[arr[i+1],arr[i]] 
+      }
+  2.从函数返回多个值
+  import {random,sqrt} form Math
+  3.一次性提取json数据
+    当ajax请求完成后，使用解构赋值，一次性将变量声明并赋值
+  4.遍历Map结构
+    任何部署了iterator接口的对象，都可以和私用for...of循环遍历
+    Map是一个二维数组
+    for(let [key,value] in map) console.log(key+'='+value)
+  5.输入模块的指定方法
+    加载模块时，往往需要指定输入哪些方法。解构赋值使得输入语句非常清晰
+    const { SourceMapConsumer, SourceNode } = require("source-map");

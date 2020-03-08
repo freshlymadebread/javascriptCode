@@ -1,0 +1,7 @@
+1.String.prototype.includes()
+2.startsWith() endWith
+3.repeat()
+    'na'.repeat(1.9)  //na   即小数会被向下取整
+4. padStart()，padEnd()
+      str.padStart(maxLength,fillString) 至少填充一次
+5. trimStart trimEnd  .replace(/\s*/g,'')

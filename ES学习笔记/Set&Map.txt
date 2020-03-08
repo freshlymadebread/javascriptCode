@@ -1,0 +1,33 @@
+1.
+  var set = new Set()
+  set.add('s')
+  set.add('2')
+  set.has('s')  //true
+  set.delete('2')
+  set.clear()
+ 数组去重 
+  function fliterSame(arr){
+    return Array.from(new Set(arr))
+    //或者是
+    //return [...new Set(arr)]
+  }
+ 字符串去重
+    [...new Set('ababbc')].join('')
+  常用的遍历方法
+    values()
+    keys()
+    entries()
+    forEach()
+2.
+  var map = new Map()
+  map.set('a','sd')
+  map.set(2,'s')
+  var a ={'key':'value'}
+  map.set(a,'123')
+  map.get(2)
+  map.get(a)
+  map.delete(2)
+  map.clear()
+  Map 将 null undefined NaN看成一个索引
+  map 与数组的转换
+  与set 相同，只不过Map对应的是二维数组  可以使用flat展开

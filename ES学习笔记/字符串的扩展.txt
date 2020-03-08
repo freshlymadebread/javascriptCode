@@ -1,0 +1,10 @@
+1.暂时性死区
+2.块级作用域
+  块级作用域必须要用大括号包裹
+    if(flag) let a =1 是没有块级作用域的
+3.const 声明的变量指向的存储空间地址不可变，但是对象的内部内容是可以更改的
+4.Object.freeze(obj) 返回冻结后的对象。冻结后对象不可变更属性
+5.globlethis的获取
+  window globle this
+  new Function('return this')()
+6.ES6对于码值大于0xFFFF的Unicode字符有很好的兼容

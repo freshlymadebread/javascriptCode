@@ -1,0 +1,23 @@
+1.Number.isNaN() Number.isFinite()
+2.Math扩展
+  Math.ceil
+  Math.floor
+  Math.round
+  Math.sqrt
+  Math.random
+  Math.sign
+  Math.trunc
+  Math.cbrt
+
+3.尾调用优化
+尾调用是指某个函数的最后一步是调用另一个函数。
+避免函数作用栈一直保存 造成浪费。
+
+4.Array.fill()
+       .from() 将类数组和可迭代对象转化为数组
+       .keys()  返回键的数组集合
+       .values() 返回值的数组集合
+       .entries() 返回键值的数组集合
+5.Array.flat(n)     将数组拉平 参数n是拉平的嵌套层数 Infinity无限
+    Array.flatMap(f(value){ doSomething })  将一位数组转化为多维数组
+6.数组中的空位看成undefined

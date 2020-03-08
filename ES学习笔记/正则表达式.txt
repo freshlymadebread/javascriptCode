@@ -1,0 +1,24 @@
+1.RegExp 构造函数
+    new RegExp('xyz',ig)
+    new RegExp(/xyz/)
+2.字符串的正则表达式
+    字符串函数支持正则的有： match();replace();search();split()
+3.u修饰符
+    unicode相关
+4.y修饰符 是粘连修饰符 与g类似 
+5.flags属性
+    RegExp.prototypt.flags =[i,g,m,,y,u]
+6. 先行断言 和后行断言
+    /\d+(?=%)/ 匹配%前的一个或多个数字
+    /(?<=\$)\d+/匹配$后的一个或多个数字
+7.具名组匹配
+    const RE_DATE = /(\d{4})-(\d{2})-(\d{2})/;
+
+    const matchObj = RE_DATE.exec('1999-12-31');
+    const year = matchObj[1]; // 1999
+    const month = matchObj[2]; // 12
+    const day = matchObj[3]; // 31
+
+注：正则的修饰符有：i（不区分大小写） g (全局匹配) m（多行匹配）
+
+常用的缩写有： /d /D /w /W

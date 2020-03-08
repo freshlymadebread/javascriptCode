@@ -1,0 +1,30 @@
+1.看到了一个超好用的（看到了第二个觉得第二个也很有用）
+  链判断运算符
+    要读取message.body.user.firstName，安全的写法是写成下面这样。
+    const firstName = (message
+        && message.body
+        && message.body.user
+        && message.body.user.firstName) || 'default';
+    即 要读取message.body.user.firstName要确定 message存在 .body存在.user存在才可以取
+    现在有了链判断运算符：
+      const firstName = message?.body?.user?.firstName || 'default';
+      iterator.return?.()
+      存在短路机制
+      a?.[++x]  如果a不存在 则++x 不执行
+2. ?? Null运算符  
+      使用方法:    x ?? y
+      若x为null或者undefined 则表达式为y，否则为x，行为类似Null
+      因为||操作符当左操作数为0 false 时会忽略之，
+      ?? 判断左操作数是否为Null，如果是空那么表达式值为
+3.类继承的方法
+    1. 声明class时，使用extend关键字 类的继承
+    2. 直接将Function 构造函数的prototype指向对象
+    3. Object.setPrototypeOf(obj,proto)
+    4. Object.create(obj) 以obj为__proto__构建对象
+4. 属性的可枚举性和遍历
+    enumerable 可枚举性  如果为false 则 for in .keys() JSON.stringify assign 会忽略
+      引入的最初目的就是为了for in 循环时过滤一些选项
+    遍历 可使用：
+        for...in...
+        .keys
+        .getOwnPorpertyNames
