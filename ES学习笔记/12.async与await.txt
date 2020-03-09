@@ -1,0 +1,23 @@
+1. async function fn(){}
+    代表fn是一个异步函数 其中有异步操作
+    let mssg = await [new Promise((s,f)={...;s(msg)})]
+    await只能用在async声明的函数中，在执行该函数时，会自动执行到await，等待await后的表达式执行完毕后，再执行下边的语句。
+    await只能接受Promise对象，
+    await 返回promise传值
+    async声明的方法，返回值是一个promise
+    async 执行完毕后，自动将promise 的status变为 fulfilled
+    async 中出现Error时，会抛出错误，因此最好使用try...catch..
+    function getTime (r,f){
+        var a =-1
+        setTimeout(_=>{Math.ceil(Math.random()*10);r(a)},1000)
+        
+    }
+    function fn1(){
+        return new Promise(getTime)
+    }
+    async function dothis(){
+        var cc = await fn1()
+        console.log('time = '+cc)
+
+    }
+    dothis().then(_=>{cosnole.log(finish)})

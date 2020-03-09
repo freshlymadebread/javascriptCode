@@ -1,0 +1,81 @@
+1. 使用 
+    Class M{
+        foo = ''; //实例属性的声明
+        constructor(){}
+        toString(){}
+        set prop(){} //对于M实例对象的属性prop的劫持
+        get prop(){} //对于M实例对象的属性prop的劫持
+        static fn (){} //静态属性类直接调用
+    }
+2. Class的所有方法都定义在类的prototype属性上
+    class Point {
+        constructor(){
+        }
+    }
+    Object.assign(Point.prototype, {
+        toString(){},
+        toValue(){}
+    });
+3. 静态属性：即只有类本身可以访问的属性 
+    class Point {
+        constructor(){
+        }
+        static fun(){}
+    }
+    以上代码与以下代码作用一样
+    class Point {
+        constructor(){
+        }
+    }
+    Point.fun = function(){}
+4.class 的继承问题
+    声明两个类，Point是ColorPoint的父类
+        class Point {
+        }
+        class ColorPoint extends Point {
+        }
+    子类继承了父类的静态方法 因此ColorPoint.__proto__= Point
+    子类相当于继承了父类的构造函数 ColorPoint.prototype.__proto__= Point.__proto__
+5. super 可以用在子类声明中。
+    1. 相当于父类的构造函数。只能在子类的constructor中使用super()
+    2. 相当于父类对象本身，可以调用父类的变量。
+6. 原型问题
+    class A {
+    }
+
+    class B extends A {
+    }
+
+    B.__proto__ === A // true
+    B.prototype.__proto__ === A.prototype // true
+7. 可以实现原生构造函数的继承
+    一个带版本功能的数组。
+    class VersionedArray extends Array {
+        constructor() {
+            super();
+            this.history = [[]];
+        }
+        commit() {
+            this.history.push(this.slice());
+        }
+        revert() {
+            this.splice(0, this.length, ...this.history[this.history.length - 1]);
+        }
+    }
+
+    var x = new VersionedArray();
+    x.push(1);
+    x.push(2);
+    x // [1, 2]
+    x.history // [[]]
+    x.commit();
+    x.history // [[], [1, 2]]
+    x.push(3);
+    x // [1, 2, 3]
+    x.history // [[], [1, 2]]
+    x.revert();
+    x // [1, 2]
+
+
+8. mixin 的实现
+    =_= 倒是想起vue哩有一个mixin 将属性合并到vue上

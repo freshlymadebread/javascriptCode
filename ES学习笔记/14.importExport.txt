@@ -1,0 +1,21 @@
+1. as 运算符
+    {x as y }  :将x当做 y进行输出  输出值是Y
+2. export 输出 一组数据
+    export {var1,fun1,array,obj as objName}
+  export 是动态绑定关系。即如果obj发生改变，则在import的地方也会改变
+3. import 加载 一组数据
+    import {var1,objName} form '.export.js'
+    导入之后 var1 objName就相当于在该文件中声明的变量
+    import命令在编译阶段执行，在代码的运行之前 ————因为是编译阶段执行，因此不接受表达式和if结构
+4.默认输出  export default 只能默认一次对应接收方式不需要{}
+// 第一组
+export default function crc32() { // 输出
+  // ...
+}
+import crc32 from 'crc32'; // 输入 import语句不需要使用大括号
+
+// 第二组
+export function crc32() { // 输出
+  // ...
+};
+import {crc32} from 'crc32'; // 输入import语句需要使用大括号

@@ -1,0 +1,21 @@
+1. 代理 proxy 用于元编程,即对编程语言进行编程
+    本质是重载了运算符,用自己的定义覆盖语言原始定义
+2.proxy代理实例 纯手写
+  数组接受任意字符 arr[x]  x可以为任意数字字符变量
+function getproxyArray(arr){
+      return new Proxy(arr , {
+        get(target, propKey, receiver){
+          let index = null
+          if(propKey == undefined) {console.log('键不能为空'); return -1;}
+          if(typeof propKey === 'object') {console.log('键不能为对象'); return -1;}
+          if(typeof propKey === 'string') {index = Number.parseFloat(propKey)}
+          if(Number.isNaN((index)) {console.log('输入的值不能转化为数字'); return -1;}
+          index = Math.ceil(Math.abs(index+0)) //+0将布尔值转化为数字
+          if(index > target.length-1) {console.log('键不能为对象'); return -1;}
+            console.log(index)
+          return target[index]
+        }
+      })
+}
+3. reflect 是类似object存在的对象
+    Reflect.set(obj,propotyName,value)
