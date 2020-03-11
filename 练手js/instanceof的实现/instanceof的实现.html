@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function instanceof2(L,R){
+        var left = L.__proto__,
+            right = R.prototype
+        while(left){
+            if(left === right) return true
+            left = left.__proto__
+        }
+        return false
+    }
+    //我们发现instanceof只不过是判断对象的隐式原型和构造函数的显示原型及其原型链是否一致
+    //因此见如下代码
+    function Object1 (age){this.age = age}
+    function Object2 (name){this.name = name}
+    Object2.prototype = Object1.prototype
+    var obj = new Object1('Sam')
+    obj instanceof Object1 //true
+    obj instanceof Object2 //true
+</script>
+</html>

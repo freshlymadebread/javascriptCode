@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>class实现</title>
+</head>
+<body>
+    class实现
+</body>
+<script type="text/javascript">
+    function Super(name){
+        this.name = name
+    }
+    Super.prototype.speek=function(){
+        console.log("I'm " + this.name )
+    }
+    function Child(name,age){
+        // var _ =new Super(name)
+        Super.call(this,name)
+        this.age = age
+    }
+    Child.prototype.speek = Super.prototype.speek
+    var a = new Child('g',11)
+    var {log} = console;
+    a.speek()
+    log('a instanceOf Child' +(a instanceof Child))
+    log('a instanceOf Super'+ (a instanceof Super))
+</script>
+</html>

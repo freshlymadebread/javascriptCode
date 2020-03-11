@@ -1,0 +1,15 @@
+1. 生成删除添加替换元素
+        document.creatElement(elment)
+        document.removeElement(elment)
+        document.appendElement(elment)
+        document.repalceElement(elment)
+2. 查询元素
+        document.getElementById('id')
+        document.getElementsByClassName()
+        document.getElementsByTagName()
+        document.querySelectorALL()
+3. 改变html元素（text，class，style）
+        element.innerHtml =''
+        element.attribute =''
+        element.setAttribute(name,value) 
+        element.style.propety(value)       

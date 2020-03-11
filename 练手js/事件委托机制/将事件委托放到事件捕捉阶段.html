@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #father{
+        margin:0 auto;
+        width:200px;
+        height: 200px;
+        background-color: red;
+    }
+    #child{
+        width:100px;
+        height: 100px;
+        background-color: yellow;
+    }
+    #gchild{
+        width:50px;
+        height: 50px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div id ='container'>
+        <li>111111111111111111</li>
+        <li>222222222222222</li>
+        <li>3333333333333333</li>
+        <li id ='qw'>4444444444444</li>
+    </div>
+</body>
+<script>
+    let container = document.getElementById('container')
+    container.addEventListener('click',function(e){console.log('事件捕捉阶段'+e.target.innerHTML)},true)
+    container.addEventListener('click',function(e){console.log('事件冒泡阶段'+e.target.innerHTML)},false)
+    let qw   = container.getElementById('qw')
+    qw.addEventListener('click',function(e){ e.stopPropagation()},true)
+    qw.addEventListener('click',function(e){ e.stopImmditaPropagation()},true)
+</script>
+</html>

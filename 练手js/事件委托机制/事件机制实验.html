@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #father{
+        margin:0 auto;
+        width:200px;
+        height: 200px;
+        background-color: red;
+    }
+    #child{
+        width:100px;
+        height: 100px;
+        background-color: yellow;
+    }
+    #gchild{
+        width:50px;
+        height: 50px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div id ='father'>
+        <div id ='child'>
+            <div id ='gchild'>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let father = document.getElementById('father')
+    let child = document.getElementById('child')
+    let gchild = document.getElementById('gchild')
+    father.addEventListener('click',(e)=>{console.log('冒泡阶段的father');console.log(e.target.id)},false)
+    father.addEventListener('click',(e)=>{
+        console.log('捕获阶段的father');
+        // console.log(e.target.id);
+        e.stopPropagation()
+    },true)
+    child.addEventListener('click',(e)=>{console.log('冒泡阶段的child');console.log(e.target.id)},false)
+    child.addEventListener('click',(e)=>{
+        console.log('捕获阶段的child');
+        console.log(e.target.id);
+        // event.stopImmediatePropagation();
+    },true)
+    gchild.addEventListener('click',(e)=>{console.log('冒泡阶段的gchild');console.log(e.target.id)},false)
+    gchild.addEventListener('click',(e)=>{
+        console.log('捕获阶段的gchild');
+        console.log(e.target.id);
+        // e.stopPropagation()
+        },true)
+</script>
+</html>
