@@ -1,0 +1,10 @@
+1. 使用场景 
+    a. 发出请求等待响应
+    b. 解决串行任务的顺序
+    c. 页面弹框，对取消和确认按钮绑定方法，回电函数执行resolved和rejected
+2. 执行顺序
+    promise.then || .fainlly || .catch 执行顺序按照定义事件的顺序执行，因为内部维护了一个queue队列
+3. 其余方法
+    Promise.all( [iterable] )  若参数不为promise则默认为resolved，其中全部promise为解决才算解决
+    Promise.race( [iterable] )  若参数不为promise则默认为resolved
+    Promise.any( [iterable] )  实验中
