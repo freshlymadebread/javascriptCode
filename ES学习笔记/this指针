@@ -1,4 +1,32 @@
+JavaScript  this指针的应用
 1. new中调用
 2. 对象调用
 3.全局
 4.fn.call
+函数在哪里调用才决定了this到底引用的是啥
+函数在哪里调用才决定了this到底引用的是啥
+函数在哪里调用才决定了this到底引用的是啥
+
+1. 函数中才会会出现this
+2. 将函数看成一个变量的话，那么每一个函数都会存在于另一个大的对象中
+3. 函数调用时，会有两部分的作用域，一个是作用域链，一个是this的上下文
+4. this 的上下文就是函数所在的对象中
+
+
+
+箭头函数的this指针相当于在箭头函数之前，对this进行赋值，采用当前的this，完美
+如下：
+let obj = {
+    a:1;
+    fun:function(){
+        var that =this;
+        return function (){ that.a }
+    }
+}
+相当于：
+let obj = {
+    a:1;
+    fun:function(){
+        return  ()=>{ this.a }
+    }
+}
