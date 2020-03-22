@@ -31,3 +31,6 @@
   Map 将 null undefined NaN看成一个索引
   map 与数组的转换
   与set 相同，只不过Map对应的是二维数组  可以使用flat展开
+3. weakMap 与map 的区别
+   a. weakMap的键名只能为对象
+   b. weakMap键名所引用的对象 ，不会进入垃圾回收机制

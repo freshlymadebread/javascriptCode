@@ -2,11 +2,15 @@
     代表fn是一个异步函数 其中有异步操作
     let mssg = await [new Promise((s,f)={...;s(msg)})]
     await只能用在async声明的函数中，在执行该函数时，会自动执行到await，等待await后的表达式执行完毕后，再执行下边的语句。
-    await只能接受Promise对象，
+    await可以接受普通的对象，但是会直接返回 resolved(接收的对象)
+    await接受Promise对象，或者thenable对象  thenable对象就是方法内有then函数
+        promise状态为 fulfilled 则await返回resolved的传参，程序继续执行
+        promise状态为 rejected 则await返回resolved的传参，程序继续执行
+            
     await 返回promise传值
     async声明的方法，返回值是一个promise
     async 执行完毕后，自动将promise 的status变为 fulfilled
-    async 中出现Error时，会抛出错误，因此最好使用try...catch..
+    async 中出现Error时，会抛出错误，因此最好使用 try...catch..
     function getTime (r,f){
         var a =-1
         setTimeout(_=>{Math.ceil(Math.random()*10);r(a)},1000)
